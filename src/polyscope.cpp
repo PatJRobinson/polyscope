@@ -33,7 +33,7 @@ namespace {
 // initialization.
 struct ContextEntry {
   ImGuiContext* context;
-  std ::function<void()> callback;
+  std::function<void()> callback;
   bool drawDefaultUI;
 };
 std::vector<ContextEntry> contextStack;
@@ -499,7 +499,9 @@ void buildPolyscopeGui() {
 
   // Create window
   static bool showPolyscopeWindow = true;
-  ImGui::SetNextWindowPos(ImVec2(imguiStackMargin, imguiStackMargin));
+  // ImGui::SetNextWindowPos(ImVec2(imguiStackMargin, imguiStackMargin));
+    ImGui::SetNextWindowPos(ImVec2(20, 20));
+
   ImGui::SetNextWindowSize(ImVec2(leftWindowsWidth, 0.));
 
   ImGui::Begin("Polyscope", &showPolyscopeWindow);
@@ -600,10 +602,15 @@ void buildPolyscopeGui() {
 void buildStructureGui() {
   // Create window
   static bool showStructureWindow = true;
+  ImGuiIO& io = ImGui::GetIO();
+  float width = io.DisplaySize.x;
+  float height = io.DisplaySize.y;
 
-  ImGui::SetNextWindowPos(ImVec2(imguiStackMargin, lastWindowHeightPolyscope + 2 * imguiStackMargin));
+
+  // ImGui::SetNextWindowPos(ImVec2(imguiStackMargin, lastWindowHeightPolyscope + 2 * imguiStackMargin));
+  ImGui::SetNextWindowPos(ImVec2(20, lastWindowHeightPolyscope + 2 * imguiStackMargin));
   ImGui::SetNextWindowSize(
-      ImVec2(leftWindowsWidth, view::windowHeight - lastWindowHeightPolyscope - 3 * imguiStackMargin));
+      ImVec2(leftWindowsWidth, height/2 - 100));// //ImVec2(leftWindowsWidth, view::windowHeight - lastWindowHeightPolyscope - 3 * imguiStackMargin));
 
   ImGui::Begin("Structures", &showStructureWindow);
 
@@ -676,11 +683,16 @@ void buildUserGuiAndInvokeCallback() {
   }
 
   if (state::userCallback) {
-
+  ImGuiIO& io = ImGui::GetIO();
+  float width = io.DisplaySize.x;
+  float height = io.DisplaySize.y;
     if (options::buildGui && options::openImGuiWindowForUserCallback) {
       ImGui::PushID("user_callback");
-      ImGui::SetNextWindowPos(ImVec2(view::windowWidth - (rightWindowsWidth + imguiStackMargin), imguiStackMargin));
-      ImGui::SetNextWindowSize(ImVec2(rightWindowsWidth, 0.));
+      // ImGui::SetNextWindowPos(ImVec2(view::windowWidth - (rightWindowsWidth + imguiStackMargin), imguiStackMargin));
+      ImGui::SetNextWindowPos(ImVec2(width, height));
+      ImGui::SetNextWindowSize(ImVec2(0., 0.));
+
+      // ImGui::SetNextWindowSize(ImVec2(rightWindowsWidth, 0.));
 
       ImGui::Begin("Command UI", nullptr);
     }

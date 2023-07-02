@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5...3.22)
 
-project(polyscope)
+# project(polyscope)
 
 ### Policy settings
 cmake_policy(SET CMP0054 NEW)   # don't implicitly dereference inside if()
@@ -16,3 +16,6 @@ add_subdirectory(deps)
 
 ### Add things for this project
 add_subdirectory(src)
+
+# add_executable(test test.cpp)
+# target_link_libraries(test polyscope)

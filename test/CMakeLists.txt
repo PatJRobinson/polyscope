@@ -6,9 +6,9 @@ enable_testing()
 project(polyscope-tests)
 
 ### Configure output locations
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 ### Configure the compiler
 
@@ -117,4 +117,3 @@ target_include_directories(polyscope-test PRIVATE "include/")
 target_link_libraries(polyscope-test gtest_main polyscope)
 
 # Add polyscope as a subproject
-add_subdirectory(../ "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")

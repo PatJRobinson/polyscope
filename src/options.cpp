@@ -6,7 +6,7 @@
 namespace polyscope {
 namespace options {
 
-std::string programName = "Polyscope";
+std::string programName = "CalyoSensus";
 int verbosity = 2;
 std::string printPrefix = "[polyscope] ";
 bool errorsThrowExceptions = false;

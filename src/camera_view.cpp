@@ -377,8 +377,7 @@ void CameraView::setViewToThisCamera(bool withFlight) {
   std::tie(look, up, right) = params.getCameraFrame();
   glm::vec3 root = params.getPosition();
   root += look * getWidgetFocalLength() * 0.01f;
-
-  CameraParameters adjParams(params.intrinsics, CameraExtrinsics::fromVectors(root, look, up));
+  CameraParameters adjParams(root, look, up, params.getFoVVerticalDegrees(), params.getAspectRatioWidthOverHeight());
 
   if (withFlight) {
     view::startFlightTo(adjParams);

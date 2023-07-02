@@ -218,7 +218,6 @@ SET(HEADERS
   ${INCLUDE_ROOT}/affine_remapper.h
   ${INCLUDE_ROOT}/affine_remapper.ipp
   ${INCLUDE_ROOT}/camera_parameters.h
-  ${INCLUDE_ROOT}/camera_parameters.ipp
   ${INCLUDE_ROOT}/camera_view.h
   ${INCLUDE_ROOT}/camera_view.ipp
   ${INCLUDE_ROOT}/color_management.h
@@ -239,7 +238,6 @@ SET(HEADERS
   ${INCLUDE_ROOT}/file_helpers.h
   ${INCLUDE_ROOT}/floating_quantity_structure.h
   ${INCLUDE_ROOT}/floating_quantity.h
-  ${INCLUDE_ROOT}/floating_quantities.h
   ${INCLUDE_ROOT}/group.h
   ${INCLUDE_ROOT}/histogram.h
   ${INCLUDE_ROOT}/image_quantity.h
@@ -309,7 +307,7 @@ add_library(polyscope ${SRCS} ${BACKEND_SRCS} ${HEADERS} ${BACKEND_HEADERS})
 
 # Mark the library target and its headers as installable
 install(TARGETS polyscope)
-install(DIRECTORY ${INCLUDE_ROOT}/ DESTINATION "${CMAKE_INSTALL_PREFIX}/include/polyscope")
+install(FILES ${HEADERS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/polyscope")
 
 # Required compiler settings
 set_property(TARGET polyscope PROPERTY CXX_STANDARD 11)
@@ -328,5 +326,5 @@ target_include_directories(polyscope PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../dep
 target_include_directories(polyscope PRIVATE "${BACKEND_INCLUDE_DIRS}")
         
 # Link settings
-target_link_libraries(polyscope PUBLIC imgui)
+target_link_libraries(polyscope PUBLIC imgui_poly)
 target_link_libraries(polyscope PRIVATE "${BACKEND_LIBS}" stb MarchingCube)
