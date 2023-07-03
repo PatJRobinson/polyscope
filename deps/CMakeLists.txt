@@ -15,7 +15,7 @@ if("${POLYSCOPE_BACKEND_OPENGL_MOCK}")
 endif()
 
 ## Imgui
-add_subdirectory(imgui_poly)
+add_subdirectory(imgui)
 
 ## Argparse
 
