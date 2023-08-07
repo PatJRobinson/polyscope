@@ -207,8 +207,11 @@ R"(
         // Checker stripes
         float modDist = min(min(mod(coord2D.x, 1.0), mod(coord2D.y, 1.0)), min(mod(-coord2D.x, 1.0), mod(-coord2D.y, 1.0)));
         float stripeBlendFac = smoothstep(0.005, .01, modDist);
-        vec4 baseColor = mix(texture(t_ground, 0.5 * coord2D), vec4(.88, .88, .88, 1.), .5); 
-        vec4 groundColor = mix(vec4(baseColor.xyz * .2, 1.0), baseColor, stripeBlendFac);
+        vec4 baseColor = mix(texture(t_ground, 0.5 * coord2D), vec4(.359, .359, .359, 0.), 0.99); 
+        // vec4 groundColor = mix(vec4(baseColor.xyz * .2, 1.0), baseColor, stripeBlendFac);
+        vec4 stripe_col = vec4(.1, .1, .1, 1.0);
+        float alpha = mix(1.0, .0, stripeBlendFac);
+        vec4 groundColor = mix(stripe_col, baseColor, stripeBlendFac);
 
         // Mirror image
         //vec2 screenCoords = vec2(gl_FragCoord.x / u_viewportDim.x, gl_FragCoord.y / u_viewportDim.y);
@@ -216,7 +219,7 @@ R"(
         vec4 mirrorImage = sampleMirror();
 
         // Ground color
-        vec3 color3 = mix(groundColor.rgb, mirrorImage.rgb * mirrorImage.w, .2 * mirrorImage.w);
+        vec3 color3 = mix(groundColor.rgb, mirrorImage.rgb * mirrorImage.w, 0.01);//.2 * mirrorImage.w);
 
         // Lighting stuff
         vec4 posCameraSpace4 = u_viewMatrix * PositionWorldHomog;
@@ -233,11 +236,12 @@ R"(
         float viewFromBelowFadeFactor = smoothstep(0, .1, u_upSign * (u_cameraHeight - u_groundHeight) / u_lengthScale);
         float fadeFactor = min(distFadeFactor, viewFromBelowFadeFactor);
         if(fadeFactor <= 0.) discard;
-        vec4 color = vec4(color3, fadeFactor);
+        // vec4 color = vec4(color3, fadeFactor);
+        vec4 color = vec4(color3, alpha);
       
         // NOTE: parameters swapped from comments.. which is correct?
         float coloredBrightness = 1.2 *orenNayarDiffuse(eyeDir, lightDir, normalCameraSpace, .05, 1.0) + .3;
-        float whiteBrightness = .25 * specular(normalCameraSpace, lightDir, eyeDir, 12.);
+        float whiteBrightness = .25 * specular(normalCameraSpace, -eyeDir, eyeDir, 480.);
 
         vec4 lightColor = vec4(color.xyz * coloredBrightness + vec3(1., 1., 1.) * whiteBrightness, color.w);
         outputF = lightColor;
