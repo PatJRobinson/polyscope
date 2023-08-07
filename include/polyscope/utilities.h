@@ -95,9 +95,21 @@ inline std::ostream& operator<<(std::ostream& output, const glm::vec4& v) {
   output << "<" << v.x << ", " << v.y << ", " << v.z << "," << v.w << ">";
   return output;
 }
-inline std::string to_string(const glm::vec3& v) {
+inline std::string to_string(const glm::vec3& v, bool round_2dp = false) {
   std::stringstream buffer;
-  buffer << v;
+  
+  if (round_2dp)
+  {
+    char str[10];
+    sprintf(str, "%.2f", v.x);
+    buffer << "x: " << str << "m ";
+    sprintf(str, "%.2f", v.y);
+    buffer << "y: " << str << "m ";
+    sprintf(str, "%.2f", v.z);
+    buffer << "z: " << str << "m";
+  }
+  else
+    buffer << v;
   return buffer.str();
 }
 inline std::string to_string_short(const glm::vec3& v) { return str_printf("<%1.3f, %1.3f, %1.3f>", v[0], v[1], v[2]); }

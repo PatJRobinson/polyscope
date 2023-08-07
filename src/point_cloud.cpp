@@ -231,7 +231,7 @@ PointCloudScalarQuantity& PointCloud::resolvePointRadiusQuantity() {
 void PointCloud::buildPickUI(size_t localPickID) {
   ImGui::TextUnformatted(("#" + std::to_string(localPickID) + "  ").c_str());
   ImGui::SameLine();
-  ImGui::TextUnformatted(to_string(getPointPosition(localPickID)).c_str());
+  ImGui::TextUnformatted(to_string(getPointPosition(localPickID), true).c_str());
 
   ImGui::Spacing();
   ImGui::Spacing();

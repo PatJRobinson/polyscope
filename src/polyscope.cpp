@@ -690,7 +690,7 @@ void buildUserGuiAndInvokeCallback() {
       ImGui::PushID("user_callback");
       // ImGui::SetNextWindowPos(ImVec2(view::windowWidth - (rightWindowsWidth + imguiStackMargin), imguiStackMargin));
       ImGui::SetNextWindowPos(ImVec2(width, height));
-      ImGui::SetNextWindowSize(ImVec2(0., 0.));
+      ImGui::SetNextWindowSize(ImVec2(500., 500.));
 
       // ImGui::SetNextWindowSize(ImVec2(rightWindowsWidth, 0.));
 
