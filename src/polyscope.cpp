@@ -659,10 +659,12 @@ void buildStructureGui() {
 void buildPickGui() {
   if (pick::haveSelection()) {
 
-    ImGui::SetNextWindowPos(ImVec2(view::windowWidth - (rightWindowsWidth + imguiStackMargin),
-                                   2 * imguiStackMargin + lastWindowHeightUser));
-    ImGui::SetNextWindowSize(ImVec2(rightWindowsWidth, 0.));
-
+    // ImGui::SetNextWindowPos(ImVec2(view::windowWidth - (rightWindowsWidth + imguiStackMargin),
+    //                                2 * imguiStackMargin + lastWindowHeightUser));
+    // ImGui::SetNextWindowSize(ImVec2(rightWindowsWidth, 0.));
+      // ImGui::SetNextWindowSize(ImVec2(500., 500.));
+      ImGui::SetNextWindowSize(ImVec2(ImGui::GetColumnWidth(0), ImGui::GetTextLineHeight() * 7));
+;
     ImGui::Begin("Selection", nullptr);
     std::pair<Structure*, size_t> selection = pick::getSelection();
 
@@ -690,7 +692,7 @@ void buildUserGuiAndInvokeCallback() {
       ImGui::PushID("user_callback");
       // ImGui::SetNextWindowPos(ImVec2(view::windowWidth - (rightWindowsWidth + imguiStackMargin), imguiStackMargin));
       ImGui::SetNextWindowPos(ImVec2(width, height));
-      ImGui::SetNextWindowSize(ImVec2(500., 500.));
+      // ImGui::SetNextWindowSize(ImVec2(500., 500.));
 
       // ImGui::SetNextWindowSize(ImVec2(rightWindowsWidth, 0.));
 
