@@ -504,7 +504,7 @@ void buildPolyscopeGui() {
 
   ImGui::SetNextWindowSize(ImVec2(leftWindowsWidth, 0.));
 
-  ImGui::Begin("Polyscope", &showPolyscopeWindow);
+  ImGui::Begin("Point Cloud Viewer", &showPolyscopeWindow);
 
   if (ImGui::Button("Reset View")) {
     view::flyToHomeView();
