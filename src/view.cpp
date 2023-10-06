@@ -33,7 +33,7 @@ double fov = defaultFov;
 double nearClipRatio = defaultNearClipRatio;
 double farClipRatio = defaultFarClipRatio;
 ProjectionMode projectionMode = ProjectionMode::Perspective;
-std::array<float, 4> bgColor{{0.359, 0.359, 0.359, 0.f}};
+std::array<float, 4> bgColor{{0.073, 0.073, 0.073, 0.f}};
 
 glm::mat4x4 viewMat;
 
