@@ -61,8 +61,6 @@ std::string getImageOriginRule(ImageOrigin imageOrigin);
 
 namespace render {
 
-static std::string window_icon_path;
-
 class AttributeBuffer {
 public:
   AttributeBuffer(RenderDataType dataType_, int arrayCount);
@@ -399,6 +397,8 @@ class Engine {
 
 public:
   // Options
+
+  static std::string window_icon_path_;
 
   // High-level control
   virtual void checkError(bool fatal = false) = 0;

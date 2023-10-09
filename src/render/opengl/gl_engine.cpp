@@ -2164,6 +2164,7 @@ void GLShaderProgram::draw() {
 
 GLEngine::GLEngine() {}
 
+
 void GLEngine::initialize() {
   // Small callback function for GLFW errors
   auto error_print_callback = [](int error, const char* description) {
@@ -2191,14 +2192,14 @@ void GLEngine::initialize() {
     
 
   {  
-    std::string filename("C:\\src\\calyosensusvulkan\\Resources\\Assets\\Images\\CalyoLogoDark.png");
+    // std::string filename("C:\\src\\calyosensusvulkan\\Resources\\Assets\\Images\\CalyoLogoDark.png");
     int image_width = 0;
     int image_height = 0;
 
     std::vector<unsigned char> db(2000*2000*4);
     {
       GLFWimage icons[1];
-      icons[0].pixels = stbi_load(filename.c_str(), &image_width, &image_height, NULL, 4);
+      icons[0].pixels = stbi_load(window_icon_path_.c_str(), &image_width, &image_height, NULL, 4);
       icons[0].width = image_width;
       icons[0].height = image_height;
 
