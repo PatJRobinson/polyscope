@@ -61,6 +61,8 @@ std::string getImageOriginRule(ImageOrigin imageOrigin);
 
 namespace render {
 
+static std::string window_icon_path;
+
 class AttributeBuffer {
 public:
   AttributeBuffer(RenderDataType dataType_, int arrayCount);

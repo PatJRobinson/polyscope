@@ -42,6 +42,8 @@ namespace backend_openGL3_glfw {
 
 GLEngine* glEngine = nullptr; // alias for global engine pointer
 
+
+
 void initializeRenderEngine() {
   glEngine = new GLEngine();
   engine = glEngine;

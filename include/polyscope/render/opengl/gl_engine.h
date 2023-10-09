@@ -35,6 +35,7 @@
 
 namespace polyscope {
 namespace render {
+
 namespace backend_openGL3_glfw {
 
 // Some very nice typdefs
