@@ -2189,116 +2189,28 @@ void GLEngine::initialize() {
   glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
   glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
   mainWindow = glfwCreateWindow(view::windowWidth, view::windowHeight, options::programName.c_str(), NULL, NULL);
-    
-
+  
   {  
     // std::string filename("C:\\src\\calyosensusvulkan\\Resources\\Assets\\Images\\CalyoLogoDark.png");
     int image_width = 0;
     int image_height = 0;
 
-    std::vector<unsigned char> db(2000*2000*4);
+    // std::vector<unsigned char> db(2000*2000*4);
     {
       GLFWimage icons[1];
       icons[0].pixels = stbi_load(window_icon_path_.c_str(), &image_width, &image_height, NULL, 4);
       icons[0].width = image_width;
       icons[0].height = image_height;
 
-      for (size_t i = 0; i < db.size(); i++)
-        db[i] = icons[0].pixels[i];
+      // for (size_t i = 0; i < db.size(); i++)
+      //   db[i] = icons[0].pixels[i];
 
       glfwSetWindowIcon(mainWindow, 1, icons);
       stbi_image_free(icons[0].pixels);
 
     }
-    // {
-    //   GLFWimage icons[1];
-    //   icons[0].pixels = (unsigned char *)malloc(sizeof(unsigned char) * 2000 * 2000 * 4);
-    //   icons[0].width = 2000;
-    //   icons[0].height = 2000;
-
-
-    //   for (size_t i = 0; i < db.size(); i++)
-    //   {
-    //     icons[0].pixels[i] = db[i];
-    //   }
-
-
-		// 	//auto t = std::time(nullptr);
-		// 	//auto tm = *std::localtime(&t);
-
-		// 	std::ofstream file("TestPNGData.txt");
-
-    //   std::string s;
-    //   size_t count = 1;
-    //   size_t offset = 0;
-
-    //   for (size_t offset = 0; offset < 4; offset++)
-    //   {
-    //     s.append("Channel " + std::to_string(offset) + "\n");
-    //     int last_char = static_cast<int>(db[offset]);
-    //     for (int i = 1; i < 2000*2000; i++)
-    //     {
-    //       int val = static_cast<int>(db[i*4+offset]);
-    //       if (val == last_char)
-    //       {
-    //         count++;
-    //       }
-    //       else 
-    //       {
-
-    //         // if(count > 1)
-    //         s.append(std::to_string(count));
-
-    //         s.append(",");
-
-    //         s.append(std::to_string(static_cast<int>(last_char)));
-
-    //         s.append("\n");
-
-    //         last_char = val;
-    //         count = 0;
-    //       }
-    //     }
-    //   }
-    //   file << s << std::endl;
-
-		// 	file.close();
-
-    //   std::vector<unsigned char> db2(db.size());
-    //   for (size_t offset = 0; offset < 4; offset++)
-    //   {
-    //     size_t pix_idx = 0;
-    //     int last_char = static_cast<int>(db[offset]);
-    //     for (int i = 1; i < s.size(); i++)
-    //     {
-    //       // get line
-    //       std::string delimiter = ">=";
-    //       std::string token = s.substr(0, s.find(delimiter)); // token is "scott"
-    //       // comma delim
-
-    //       // set pixel values in a loop
-    //         // icons[0].pixels[i]
-
-    //       ++pix_idx;
-    //     }
-    //   }
-      
-    //   // for (size_t i = 0; i < 2000; i++)
-    //   // {
-    //   //   for (size_t j = 0; j < 2000; j++)
-    //   //   {
-    //   //     icons[0].pixels[4 * (i*2000+j) + 0] = 256 * j/2000.f;
-    //   //     icons[0].pixels[4 * (i*2000+j) + 1] = 128;//256 * j/2000.f;
-    //   //     icons[0].pixels[4 * (i*2000+j) + 2] = 128;//256 * j/2000.f;
-    //   //   }
-    //   // }
-    //   glfwSetWindowIcon(mainWindow, 1, icons);
-    //   free(icons[0].pixels);
-    // }
-
-
   }
-
+  
   glfwMakeContextCurrent(mainWindow);
   glfwSwapInterval(1); // Enable vsync
   glfwSetWindowPos(mainWindow, view::initWindowPosX, view::initWindowPosY);
