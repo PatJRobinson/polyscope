@@ -9,6 +9,8 @@
 #include "imgui.h"
 #include "stb_image.h"
 
+#include "CalyoGroundPlane.h"
+
 namespace polyscope {
 namespace render {
 

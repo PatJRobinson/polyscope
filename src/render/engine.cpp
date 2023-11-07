@@ -208,6 +208,8 @@ ShaderProgram::ShaderProgram(DrawMode dm) : drawMode(dm), uniqueID(render::engin
   }
 }
 
+std::string Engine::window_icon_path_ = "";
+
 void Engine::buildEngineGui() {
 
   ImGui::SetNextTreeNodeOpen(false, ImGuiCond_FirstUseEver);

@@ -2183,6 +2183,28 @@ void GLEngine::initialize() {
   glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
   glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
   mainWindow = glfwCreateWindow(view::windowWidth, view::windowHeight, options::programName.c_str(), NULL, NULL);
+  
+  {  
+    // std::string filename("C:\\src\\calyosensusvulkan\\Resources\\Assets\\Images\\CalyoLogoDark.png");
+    int image_width = 0;
+    int image_height = 0;
+
+    // std::vector<unsigned char> db(2000*2000*4);
+    {
+      GLFWimage icons[1];
+      icons[0].pixels = stbi_load(window_icon_path_.c_str(), &image_width, &image_height, NULL, 4);
+      icons[0].width = image_width;
+      icons[0].height = image_height;
+
+      // for (size_t i = 0; i < db.size(); i++)
+      //   db[i] = icons[0].pixels[i];
+
+      glfwSetWindowIcon(mainWindow, 1, icons);
+      stbi_image_free(icons[0].pixels);
+
+    }
+  }
+  
   glfwMakeContextCurrent(mainWindow);
   glfwSwapInterval(1); // Enable vsync
   glfwSetWindowPos(mainWindow, view::initWindowPosX, view::initWindowPosY);

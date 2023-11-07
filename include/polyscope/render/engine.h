@@ -398,6 +398,8 @@ class Engine {
 public:
   // Options
 
+  static std::string window_icon_path_;
+  
   // High-level control
   virtual void checkError(bool fatal = false) = 0;
   void buildEngineGui();
