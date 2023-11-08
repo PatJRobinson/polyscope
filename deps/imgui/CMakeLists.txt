@@ -43,7 +43,7 @@ if("${POLYSCOPE_BACKEND_OPENGL3_GLFW}")
       # Silence warnings about openGL deprecation
       add_definitions(-DGL_SILENCE_DEPRECATION)  
       find_library(opengl_library OpenGL)
-      target_link_libraries(imgui PRIVATE ${opengl_library})
+      target_link_libraries(imgui_poly PRIVATE ${opengl_library})
   else()
       # On Windows/Linux, use the glad openGL loader
 
